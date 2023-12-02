@@ -24,7 +24,7 @@ function App() {
   }
 
   useEffect(() => {
-    result = getRandomNumber(0, 3);
+    result = getRandomNumber(0, 2);
     const timeoutId = setTimeout(() => {
       setShouldAnimate(false);
       if (shouldAnimate) {
