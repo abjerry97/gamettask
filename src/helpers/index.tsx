@@ -13,7 +13,7 @@ const fillArray = (value: number) => {
 // }
 
 const setWinningValues = (value: number) => {
-  value = getRandomNumber(0, 9); //remove when the value starts coming from the api
+  // value = getRandomNumber(0, 9); //remove when the value starts coming from the api
   return fillArray(value);
 };
 const setLosingValues = () => {

@@ -8,15 +8,15 @@ import {
 } from "./helpers";
 
 function App() {
-  let result = 0;
+  let result = useRef<any>();
   const _child1 = useRef<any>();
   const _child2 = useRef<any>();
   const _child3 = useRef<any>();
-  const [winner, setWinner] = useState<any>(null);
+  const winner = useRef<any>();
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const spinners = [_child1, _child2, _child3];
   function handleClick() {
-    setWinner(0);
+    winner.current = 0;
     _child1?.current?.onStart();
     _child2?.current?.onStart();
     _child3?.current?.onStart();
@@ -24,18 +24,20 @@ function App() {
   }
 
   useEffect(() => {
-    result = getRandomNumber(0, 2);
     const timeoutId = setTimeout(() => {
       setShouldAnimate(false);
       if (shouldAnimate) {
-        setResult(result).forEach((result: number, index: number) => {
+        result.current = getRandomNumber(0, 2);
+        let resultValues = setResult(result.current);
+        resultValues.forEach((result: number, index: number) => {
           spinners[index]?.current?.onFinish(result);
         });
 
         // alert(result)
       }
-      if (result == 0 || result <1) {setWinner(false); }
-      else setWinner(true);
+      if (result.current == 0 || result.current < 1) {
+        winner.current = false;
+      } else winner.current = true;
     }, 2000);
 
     return () => clearTimeout(timeoutId);
@@ -48,17 +50,44 @@ function App() {
     repeatButton = <RepeatButton onClick={handleClick} />;
   }
 
-  if (winner) {
+  if (winner.current) {
     winningSound = <WinningSound />;
   }
 
   return (
     <div>
-      <div className="bg-white text-white opacity-100 z50">{winner}</div>
+      <div
+        className=""
+        style={{
+          backgroundColor: "#fff",
+          width: "fit-content",
+          margin:"auto",
+          padding:".5em"
+
+        }}
+      >
+        {" "}
+        {result.current}
+      </div>
       <div className={`spinner-container`}>
-        <Spinner shouldAnimate={shouldAnimate} ref={_child1} timer="1000" />
-        <Spinner shouldAnimate={shouldAnimate} ref={_child2} timer="1400" />
-        <Spinner shouldAnimate={shouldAnimate} ref={_child3} timer="2200" />
+        <Spinner
+          shouldAnimate={shouldAnimate}
+          ref={_child1}
+          timer="1000"
+          offset={1}
+        />
+        <Spinner
+          shouldAnimate={shouldAnimate}
+          ref={_child2}
+          timer="1400"
+          offset={2}
+        />
+        <Spinner
+          shouldAnimate={shouldAnimate}
+          ref={_child3}
+          timer="2200"
+          offset={3}
+        />
         <div className="gradient-fade"></div>
       </div>
       {repeatButton}

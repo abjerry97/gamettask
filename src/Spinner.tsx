@@ -51,6 +51,23 @@ const Spinner = forwardRef((props: any, passedRef: any) => {
       }}
       className={`icons`}
     />
+    // <div className="iconsWrapper">
+    //   <div className="  bg-white" style={{ backgroundColor: "#fff" }}>
+    //     dfdf
+    //   </div>
+    //   <div className="  bg-white" style={{ backgroundColor: "#fff" }}>
+    //     dfdf
+    //   </div>
+    //   <div className="  bg-white" style={{ backgroundColor: "#fff" }}>
+    //     dfdf
+    //   </div>
+    //   <div className="  bg-white" style={{ backgroundColor: "#fff" }}>
+    //     dfdf
+    //   </div>
+    //   <div className="  bg-white" style={{ backgroundColor: "#fff" }}>
+    //     dfdf
+    //   </div>
+    // </div>
   );
 });
 

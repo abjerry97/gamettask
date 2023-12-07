@@ -56,6 +56,18 @@ h1 span {
   transform: translateZ(0);
 }
 
+.iconsWrapper {  
+  display: inline-block;
+  width: 128px;
+  height: 564px;
+  overflow: hidden;
+  background: #fff url(https://andyhoffman.codes/random-assets/img/slots/sprite5.png) repeat-y; 
+ will-change: backgroundPosition;
+  transition: 0.3s background-position ease-in-out;
+  padding: 0 80px;
+  transform: translateZ(0);
+}
+
 .icons:nth-child(2) {
   margin: 0 10px;
 }
@@ -117,39 +129,4 @@ h1 span {
   }
 }
 
-
-
-
-.bay-card-wrapper {
-  /* -webkit-animation: marquee 1s linear infinite; */
-  animation: marquee 10s linear infinite;
-  /* background-size: 194.5px 2956px ; */
-}
-
-
-.bay-card-wrapper.wrapper1 {
-  bottom: -100%;
-  margin-left: 1rem;
-}
-
-/* @-webkit-keyframes marquee {
-  100% { 
-    transform: translateY(-66.6666%);  
-  }
-}
-
-@keyframes marquee {
-  100% { 
-    transform: translateY(-66.6666%);  
-  }
-} */
-
-
-@keyframes marquee {
-  from {
-    transform: translateY(0%);
-  }
-  to {
-    transform: translateY(-83%);
-  }
-}
+  
